@@ -467,4 +467,16 @@ def current_user():
     return jsonify({'error': 'Not authenticated'}), 401
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Railway环境配置
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_DEBUG', 'False').lower() in ['true', '1', 'yes']
+    
+    # 在Railway上使用0.0.0.0绑定所有接口
+    host = '0.0.0.0' if os.environ.get('RAILWAY_DEPLOYMENT') else '127.0.0.1'
+    
+    print(f"🚂 启动Railway FAQ后端服务...")
+    print(f"🌐 主机: {host}")
+    print(f"🔌 端口: {port}")
+    print(f"🐛 调试模式: {debug}")
+    
+    app.run(host=host, port=port, debug=debug)

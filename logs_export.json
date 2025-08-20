@@ -1,0 +1,398 @@
+[
+  [
+    1,
+    "\u6211\u60f3\u8bf7\u5047\u600e\u4e48\u529e\uff1f",
+    "",
+    "general",
+    "87cd84bd-b3a2-4438-9cb0-b1b5ecde4568",
+    0,
+    "2025-08-10 23:06:30.192120"
+  ],
+  [
+    2,
+    "\u6211\u60f3\u8bf7\u5047\u600e\u4e48\u529e\uff1f",
+    "",
+    "general",
+    "d43b96a7-ac5d-44b2-8806-6970af6214c5",
+    0,
+    "2025-08-10 23:06:54.101298"
+  ],
+  [
+    3,
+    "\u8bf7\u5047\u9700\u8981\u4ec0\u4e48\u6750\u6599\uff1f",
+    "",
+    "general",
+    "d43b96a7-ac5d-44b2-8806-6970af6214c5",
+    0,
+    "2025-08-10 23:06:55.843069"
+  ],
+  [
+    4,
+    "\u8bf7\u5047\u591a\u4e45\u9700\u8981\u5ba1\u6279\uff1f",
+    "",
+    "general",
+    "d43b96a7-ac5d-44b2-8806-6970af6214c5",
+    0,
+    "2025-08-10 23:06:57.553749"
+  ],
+  [
+    5,
+    "\u5982\u679c\u8bf7\u5047\u88ab\u62d2\u7edd\u600e\u4e48\u529e\uff1f",
+    "",
+    "general",
+    "d43b96a7-ac5d-44b2-8806-6970af6214c5",
+    0,
+    "2025-08-10 23:06:59.117259"
+  ],
+  [
+    6,
+    "[SESSION_END]",
+    null,
+    null,
+    "d43b96a7-ac5d-44b2-8806-6970af6214c5",
+    1,
+    "2025-08-10 23:07:02.623815"
+  ],
+  [
+    7,
+    "\u6211\u60f3\u8bf7\u5047\u600e\u4e48\u529e\uff1f",
+    "",
+    "general",
+    "6e828605-6497-4ead-8f35-382d7393b55e",
+    0,
+    "2025-08-10 23:07:27.201278"
+  ],
+  [
+    8,
+    "\u8bf7\u5047\u9700\u8981\u4ec0\u4e48\u6750\u6599\uff1f",
+    "",
+    "general",
+    "6e828605-6497-4ead-8f35-382d7393b55e",
+    0,
+    "2025-08-10 23:07:29.195681"
+  ],
+  [
+    9,
+    "\u8bf7\u5047\u591a\u4e45\u9700\u8981\u5ba1\u6279\uff1f",
+    "",
+    "general",
+    "6e828605-6497-4ead-8f35-382d7393b55e",
+    0,
+    "2025-08-10 23:07:31.355565"
+  ],
+  [
+    10,
+    "\u5982\u679c\u8bf7\u5047\u88ab\u62d2\u7edd\u600e\u4e48\u529e\uff1f",
+    "",
+    "general",
+    "6e828605-6497-4ead-8f35-382d7393b55e",
+    0,
+    "2025-08-10 23:07:33.204544"
+  ],
+  [
+    11,
+    "[SESSION_END]",
+    null,
+    null,
+    "6e828605-6497-4ead-8f35-382d7393b55e",
+    1,
+    "2025-08-10 23:07:36.109402"
+  ],
+  [
+    12,
+    "\u8fd9\u662f\u4e00\u4e2a\u6d4b\u8bd5\u6d88\u606f",
+    "",
+    "general",
+    "2e2a9d92-f0e8-478a-bad1-13044b503e89",
+    0,
+    "2025-08-10 23:07:38.139769"
+  ],
+  [
+    13,
+    "how to leave",
+    "how, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-10 23:08:27.367518"
+  ],
+  [
+    14,
+    "i dont know",
+    "dont, know",
+    "general",
+    null,
+    0,
+    "2025-08-10 23:08:42.501961"
+  ],
+  [
+    15,
+    "general",
+    "general",
+    "general",
+    null,
+    0,
+    "2025-08-10 23:09:12.933775"
+  ],
+  [
+    16,
+    "how can i leave",
+    "how, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-10 23:09:28.690159"
+  ],
+  [
+    17,
+    "how can i go to the hr portal",
+    "how, portal",
+    "hr general",
+    null,
+    0,
+    "2025-08-10 23:09:40.629218"
+  ],
+  [
+    18,
+    "[SESSION_END]",
+    null,
+    null,
+    "fdfe0bb8-4e22-4b13-8c8f-a8665691415f",
+    1,
+    "2025-08-10 23:12:35.640475"
+  ],
+  [
+    19,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    "ac8a0db5-73c9-4ad1-bf79-2d9695a6d314",
+    0,
+    "2025-08-10 23:13:21.208036"
+  ],
+  [
+    20,
+    "how can i go to the hr portal",
+    "how, portal",
+    "hr general",
+    "ac8a0db5-73c9-4ad1-bf79-2d9695a6d314",
+    0,
+    "2025-08-10 23:13:31.039021"
+  ],
+  [
+    21,
+    "ok thank you",
+    "thank",
+    "general",
+    "ac8a0db5-73c9-4ad1-bf79-2d9695a6d314",
+    0,
+    "2025-08-10 23:13:50.043514"
+  ],
+  [
+    22,
+    "[SESSION_END]",
+    null,
+    null,
+    "ac8a0db5-73c9-4ad1-bf79-2d9695a6d314",
+    1,
+    "2025-08-10 23:14:00.352423"
+  ],
+  [
+    23,
+    "[SESSION_END]",
+    null,
+    null,
+    "7c8a7026-98e8-4889-bfa6-0401e5ec628b",
+    1,
+    "2025-08-10 23:16:56.670435"
+  ],
+  [
+    24,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-10 23:26:37.434568"
+  ],
+  [
+    25,
+    "I don't understand",
+    "don, understand",
+    "general",
+    null,
+    0,
+    "2025-08-10 23:26:50.191130"
+  ],
+  [
+    26,
+    "I need to talk to someone",
+    "need, talk, someone",
+    "general",
+    null,
+    0,
+    "2025-08-10 23:27:06.049091"
+  ],
+  [
+    27,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    "b135ee45-0462-4602-8fee-b524d016098a",
+    0,
+    "2025-08-10 23:27:24.007312"
+  ],
+  [
+    28,
+    "But how can I go to the HR portal?",
+    "how, portal",
+    "hr general",
+    "b135ee45-0462-4602-8fee-b524d016098a",
+    0,
+    "2025-08-10 23:27:36.438343"
+  ],
+  [
+    29,
+    "[SESSION_END]",
+    null,
+    null,
+    "b135ee45-0462-4602-8fee-b524d016098a",
+    1,
+    "2025-08-10 23:28:01.425412"
+  ],
+  [
+    30,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-11 15:37:23.659884"
+  ],
+  [
+    31,
+    "How can I go to the Hr portal",
+    "how, portal",
+    "hr general",
+    null,
+    0,
+    "2025-08-11 15:37:43.701503"
+  ],
+  [
+    32,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    "7c6a8d62-828a-49ce-98a8-4fbe89399901",
+    0,
+    "2025-08-11 15:38:01.733885"
+  ],
+  [
+    33,
+    "How can I log in with your employee credentials",
+    "how, log, employee, credentials",
+    "hr general",
+    "7c6a8d62-828a-49ce-98a8-4fbe89399901",
+    0,
+    "2025-08-11 15:38:24.577830"
+  ],
+  [
+    34,
+    "[SESSION_END]",
+    null,
+    null,
+    "7c6a8d62-828a-49ce-98a8-4fbe89399901",
+    1,
+    "2025-08-11 15:38:42.398114"
+  ],
+  [
+    35,
+    "I need to speak to someone",
+    "need, speak, someone",
+    "general",
+    null,
+    0,
+    "2025-08-11 15:41:03.480854"
+  ],
+  [
+    36,
+    "How to reset password",
+    "how, reset, password",
+    "password reset",
+    null,
+    0,
+    "2025-08-11 15:42:32.616621"
+  ],
+  [
+    37,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-11 20:09:52.676187"
+  ],
+  [
+    38,
+    "vacation leave",
+    "vacation, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-11 20:10:59.865989"
+  ],
+  [
+    39,
+    "What is artificial intelligence?",
+    "artificial, intelligence",
+    "general",
+    null,
+    0,
+    "2025-08-13 19:55:02.158107"
+  ],
+  [
+    40,
+    "How does machine learning work?",
+    "how, machine, learning, work",
+    "training",
+    null,
+    0,
+    "2025-08-13 19:55:33.276690"
+  ],
+  [
+    41,
+    "How can I leave?",
+    "how, leave",
+    "vacation leave",
+    null,
+    0,
+    "2025-08-13 20:00:13.324549"
+  ],
+  [
+    42,
+    "How can I leave?",
+    "how, leave",
+    "vacation leave",
+    "751bc690-a1ef-4879-a715-59732a4b1b21",
+    0,
+    "2025-08-13 20:00:56.801370"
+  ],
+  [
+    43,
+    "So how can I go to the Hr portal and log in?",
+    "how, portal, log",
+    "hr general",
+    "751bc690-a1ef-4879-a715-59732a4b1b21",
+    0,
+    "2025-08-13 20:01:18.442006"
+  ],
+  [
+    44,
+    "[SESSION_END]",
+    null,
+    null,
+    "751bc690-a1ef-4879-a715-59732a4b1b21",
+    1,
+    "2025-08-13 20:01:30.151696"
+  ]
+]

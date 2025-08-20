@@ -1,0 +1,34 @@
+[
+  [
+    1,
+    "testuser",
+    "test@example.com",
+    "pbkdf2:sha256:260000$Du063GszZfcyQWUe$337d31d9c3d6b261e5edf13333ccb88447a1215b6acd01d3bfcb6651b5f7cc97",
+    "employee",
+    "2025-08-10 23:06:30.142636"
+  ],
+  [
+    2,
+    "vicki",
+    "vicki@u.com",
+    "pbkdf2:sha256:260000$WVxQxO48Blt1nBgp$8f00403ef0df1c79ba80f9b729077487671f63f7d9111a2312a3dbb98892b9b5",
+    "admin",
+    "2025-08-10 23:08:02.648511"
+  ],
+  [
+    3,
+    "vi2",
+    "vi2@u.com",
+    "pbkdf2:sha256:260000$7HniO1Pz6qsYhDnw$783d8890caece434c242d102476b05856d48b6f5f6e58b8321abe2858f1f7fac",
+    "employee",
+    "2025-08-11 15:41:45.457744"
+  ],
+  [
+    4,
+    "vicki2",
+    "vicki2@u.com",
+    "pbkdf2:sha256:260000$VvlzvqxKMVXVlxIQ$25fd4df2828422d0214f5a624374277424d3222208ec66ede1dd42ef93803b72",
+    "admin",
+    "2025-08-13 19:59:51.870545"
+  ]
+]

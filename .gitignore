@@ -4,8 +4,9 @@
 .env.production
 
 # Database files
-*.db
 *.sqlite
+# Allow faq.db for data migration
+!faq.db
 
 # Python
 __pycache__/

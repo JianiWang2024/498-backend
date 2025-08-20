@@ -1,0 +1,62 @@
+[
+  [
+    1,
+    "How do I apply for vacation leave?",
+    "You can apply for vacation leave through the HR portal under 'Leave Management'. Log in with your employee credentials, select 'Request Leave', choose 'Vacation', and fill in the required dates and details."
+  ],
+  [
+    2,
+    "How to reset my password?",
+    "To reset your password, go to the IT self-service portal and click 'Reset Password'. You can also contact the IT helpdesk at ext. 1234 or email it-support@company.com."
+  ],
+  [
+    3,
+    "Where can I find my payroll information?",
+    "Your payroll information is available in the Employee Self-Service portal under 'Payroll & Benefits'. You can view pay stubs, tax documents, and update direct deposit information there."
+  ],
+  [
+    4,
+    "What are the company working hours?",
+    "Standard working hours are Monday to Friday, 9:00 AM to 5:00 PM. Some departments may have flexible hours. Please check with your manager for specific arrangements."
+  ],
+  [
+    5,
+    "How do I access the company VPN?",
+    "To access the company VPN, download the VPN client from the IT portal, use your domain credentials to log in. For setup assistance, contact IT support at it-support@company.com."
+  ],
+  [
+    6,
+    "What is the dress code policy?",
+    "Our dress code is business casual. Jeans are allowed on Fridays. For client meetings, business formal attire is required. Please refer to the employee handbook for detailed guidelines."
+  ],
+  [
+    7,
+    "How to book a meeting room?",
+    "Meeting rooms can be booked through Outlook calendar or the room booking system on the intranet. Rooms are available on a first-come, first-served basis. Please cancel if you no longer need the room."
+  ],
+  [
+    8,
+    "What are the health insurance benefits?",
+    "We offer comprehensive health insurance including medical, dental, and vision coverage. Details are available in the Benefits section of the HR portal. Open enrollment is in November each year."
+  ],
+  [
+    9,
+    "How do I report a technical issue?",
+    "Technical issues can be reported through the IT helpdesk portal, by calling ext. 1234, or emailing it-support@company.com. Please provide detailed information about the issue for faster resolution."
+  ],
+  [
+    10,
+    "What is the remote work policy?",
+    "Remote work is available 2-3 days per week depending on your role and manager approval. Please discuss with your manager and submit a remote work request through HR for approval."
+  ],
+  [
+    11,
+    "How to access company training programs?",
+    "Training programs are available through the Learning Management System (LMS) on the company intranet. You can browse courses, enroll, and track your progress. Some courses require manager approval."
+  ],
+  [
+    12,
+    "What is the expense reimbursement process?",
+    "Submit expense reports through the Finance portal with receipts attached. Business expenses are typically reimbursed within 2 weeks. For questions, contact finance@company.com."
+  ]
+]

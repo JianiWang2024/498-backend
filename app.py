@@ -181,10 +181,10 @@ def simple_chat():
             'error': str(e)
         }), 500
 
-# Add simple FAQ search API (direct database query)
+# Add hybrid FAQ search API (database first, then AI fallback)
 @app.route('/api/faq/search', methods=['POST'])
 def search_faq():
-    """Simple FAQ search API that directly queries the database"""
+    """Hybrid FAQ search API: database first, then AI fallback"""
     try:
         data = request.get_json()
         user_question = data.get('question', '').strip()
@@ -240,7 +240,8 @@ def search_faq():
                 best_score = score
                 best_match = faq
         
-        if best_match and best_score > 0:
+        # Step 2: If we found a good database match, return it
+        if best_match and best_score >= 2:  # Lower threshold for database matches
             return jsonify({
                 'question': user_question,
                 'answer': best_match.answer,
@@ -249,18 +250,59 @@ def search_faq():
                 'found': True,
                 'faq_id': best_match.id,
                 'relevance_score': best_score,
+                'strategy': 'database_first',
                 'timestamp': datetime.now().isoformat()
             }), 200
-        else:
+        
+        # Step 3: If no good database match, try AI service
+        try:
+            logger.info(f"No good database match found, trying AI service for: {user_question}")
+            
+            # Use AI service to generate answer based on existing FAQs
+            ai_result = ai_service.smart_answer(user_question, all_faqs)
+            
             return jsonify({
                 'question': user_question,
-                'answer': 'I couldn\'t find a specific answer to your question. Please try rephrasing or contact support for more help.',
-                'source': 'database',
-                'confidence': 'low',
-                'found': False,
-                'available_topics': [faq.question for faq in all_faqs[:5]],  # Show first 5 available topics
+                'answer': ai_result['answer'],
+                'source': 'ai_service',
+                'confidence': ai_result.get('confidence', 'medium'),
+                'found': True,
+                'strategy': 'ai_fallback',
+                'similarity': ai_result.get('similarity', 0.0),
+                'emotion_analysis': ai_result.get('emotion_analysis', {}),
+                'requires_human': ai_result.get('requires_human', False),
                 'timestamp': datetime.now().isoformat()
             }), 200
+            
+        except Exception as ai_error:
+            logger.error(f"AI service failed: {ai_error}")
+            
+            # If AI service also fails, return database fallback
+            if best_match and best_score > 0:
+                return jsonify({
+                    'question': user_question,
+                    'answer': best_match.answer,
+                    'source': 'database_faq_fallback',
+                    'confidence': 'low',
+                    'found': True,
+                    'faq_id': best_match.id,
+                    'relevance_score': best_score,
+                    'strategy': 'database_fallback',
+                    'ai_error': str(ai_error),
+                    'timestamp': datetime.now().isoformat()
+                }), 200
+            else:
+                return jsonify({
+                    'question': user_question,
+                    'answer': 'I couldn\'t find a specific answer to your question. Please try rephrasing or contact support for more help.',
+                    'source': 'no_match',
+                    'confidence': 'low',
+                    'found': False,
+                    'strategy': 'no_match',
+                    'available_topics': [faq.question for faq in all_faqs[:5]],
+                    'ai_error': str(ai_error),
+                    'timestamp': datetime.now().isoformat()
+                }), 200
         
     except Exception as e:
         logger.error(f"FAQ search API error: {e}")

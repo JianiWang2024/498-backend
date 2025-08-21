@@ -277,7 +277,7 @@ def search_faq():
         except Exception as ai_error:
             logger.error(f"AI service failed: {ai_error}")
             
-            # If AI service also fails, return database fallback
+            # Enhanced database fallback with better keyword matching
             if best_match and best_score > 0:
                 return jsonify({
                     'question': user_question,
@@ -292,17 +292,50 @@ def search_faq():
                     'timestamp': datetime.now().isoformat()
                 }), 200
             else:
-                return jsonify({
-                    'question': user_question,
-                    'answer': 'I couldn\'t find a specific answer to your question. Please try rephrasing or contact support for more help.',
-                    'source': 'no_match',
-                    'confidence': 'low',
-                    'found': False,
-                    'strategy': 'no_match',
-                    'available_topics': [faq.question for faq in all_faqs[:5]],
-                    'ai_error': str(ai_error),
-                    'timestamp': datetime.now().isoformat()
-                }), 200
+                # Try to find partial matches or related topics
+                partial_matches = []
+                for faq in all_faqs:
+                    question_lower = faq.question.lower()
+                    answer_lower = faq.answer.lower()
+                    
+                    # Check for partial word matches
+                    user_words = user_question_lower.split()
+                    for word in user_words:
+                        if len(word) > 3:  # Only check words longer than 3 characters
+                            if word in question_lower or word in answer_lower:
+                                partial_matches.append({
+                                    'faq': faq,
+                                    'matched_word': word,
+                                    'score': 1
+                                })
+                
+                if partial_matches:
+                    # Return the best partial match
+                    best_partial = max(partial_matches, key=lambda x: x['score'])
+                    return jsonify({
+                        'question': user_question,
+                        'answer': f"While I don't have an exact answer, here's some related information: {best_partial['faq'].answer}",
+                        'source': 'database_partial_match',
+                        'confidence': 'low',
+                        'found': True,
+                        'faq_id': best_partial['faq'].id,
+                        'strategy': 'partial_database_match',
+                        'matched_word': best_partial['matched_word'],
+                        'ai_error': str(ai_error),
+                        'timestamp': datetime.now().isoformat()
+                    }), 200
+                else:
+                    return jsonify({
+                        'question': user_question,
+                        'answer': 'I couldn\'t find a specific answer to your question. Here are some available topics you can ask about:',
+                        'source': 'no_match',
+                        'confidence': 'low',
+                        'found': False,
+                        'strategy': 'no_match',
+                        'available_topics': [faq.question for faq in all_faqs[:8]],  # Show more topics
+                        'ai_error': str(ai_error),
+                        'timestamp': datetime.now().isoformat()
+                    }), 200
         
     except Exception as e:
         logger.error(f"FAQ search API error: {e}")

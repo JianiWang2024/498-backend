@@ -140,6 +140,47 @@ def test_session():
             'timestamp': datetime.now().isoformat()
         }), 500
 
+# Add simple chat API for testing (without AI dependencies)
+@app.route('/api/chat/simple', methods=['POST'])
+def simple_chat():
+    """Simple chat API without AI dependencies for testing"""
+    try:
+        data = request.get_json()
+        user_question = data.get('question', '').strip()
+        
+        if not user_question:
+            return jsonify({'error': 'Question cannot be empty'}), 400
+        
+        # Simple keyword-based response (no AI)
+        user_question_lower = user_question.lower()
+        
+        if 'hello' in user_question_lower or 'hi' in user_question_lower:
+            answer = "Hello! How can I help you today?"
+        elif 'help' in user_question_lower:
+            answer = "I'm here to help! What would you like to know?"
+        elif 'faq' in user_question_lower:
+            answer = "You can ask me any questions about our services."
+        else:
+            answer = "Thank you for your question. I'll get back to you soon."
+        
+        return jsonify({
+            'question': user_question,
+            'answer': answer,
+            'source': 'simple_chat',
+            'confidence': 'medium',
+            'timestamp': datetime.now().isoformat()
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Simple chat API error: {e}")
+        return jsonify({
+            'question': user_question,
+            'answer': 'Sorry, there was an error processing your request.',
+            'source': 'error',
+            'confidence': 'low',
+            'error': str(e)
+        }), 500
+
 # Initialize database with PostgreSQL compatibility for Railway
 def init_database():
     """Initialize database with PostgreSQL compatibility for Railway"""

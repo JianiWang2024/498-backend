@@ -32,6 +32,11 @@ if not app.config.get('SECRET_KEY'):
     app.config['SECRET_KEY'] = 'dev-secret-key-change-in-production'
     logger.warning("Using default SECRET_KEY - set SECRET_KEY environment variable in production")
 
+# Temporary OpenAI API key for testing (remove in production)
+if not app.config.get('OPENAI_API_KEY'):
+    app.config['OPENAI_API_KEY'] = 'sk-4TMyDTGXFc6xoMQiWhkkAUgoPLJqWoAZUSpNGhdPdUftcFiF'
+    logger.warning("Using temporary OpenAI API key - set OPENAI_API_KEY environment variable in production")
+
 # Configure CORS to allow frontend access
 CORS(app, 
      supports_credentials=True,

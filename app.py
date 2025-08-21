@@ -90,6 +90,56 @@ def handle_exception(e):
     logger.error(f"Unhandled exception: {e}")
     return jsonify({'error': 'Server error occurred'}), 500
 
+# Add simple test endpoints for debugging
+@app.route('/api/test/simple', methods=['GET'])
+def test_simple():
+    """Simple test endpoint to verify basic functionality"""
+    return jsonify({'message': 'Simple test successful', 'timestamp': datetime.now().isoformat()}), 200
+
+@app.route('/api/test/db', methods=['GET'])
+def test_db():
+    """Test database operations"""
+    try:
+        # Test basic database operations
+        faq_count = FAQ.query.count()
+        user_count = User.query.count()
+        
+        return jsonify({
+            'message': 'Database test successful',
+            'faq_count': faq_count,
+            'user_count': user_count,
+            'timestamp': datetime.now().isoformat()
+        }), 200
+    except Exception as e:
+        logger.error(f"Database test failed: {e}")
+        return jsonify({
+            'message': 'Database test failed',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
+@app.route('/api/test/session', methods=['GET'])
+def test_session():
+    """Test session functionality"""
+    try:
+        # Test session operations
+        session['test_key'] = 'test_value'
+        test_value = session.get('test_key')
+        session.pop('test_key', None)
+        
+        return jsonify({
+            'message': 'Session test successful',
+            'test_value': test_value,
+            'timestamp': datetime.now().isoformat()
+        }), 200
+    except Exception as e:
+        logger.error(f"Session test failed: {e}")
+        return jsonify({
+            'message': 'Session test failed',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
 # Initialize database with PostgreSQL compatibility for Railway
 def init_database():
     """Initialize database with PostgreSQL compatibility for Railway"""

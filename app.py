@@ -181,6 +181,97 @@ def simple_chat():
             'error': str(e)
         }), 500
 
+# Add simple FAQ search API (direct database query)
+@app.route('/api/faq/search', methods=['POST'])
+def search_faq():
+    """Simple FAQ search API that directly queries the database"""
+    try:
+        data = request.get_json()
+        user_question = data.get('question', '').strip()
+        
+        if not user_question:
+            return jsonify({'error': 'Question cannot be empty'}), 400
+        
+        # Get all FAQs from database
+        all_faqs = FAQ.query.all()
+        
+        if not all_faqs:
+            return jsonify({
+                'question': user_question,
+                'answer': 'No FAQs available in the database.',
+                'source': 'database',
+                'confidence': 'low',
+                'found': False
+            }), 200
+        
+        # Simple keyword matching (case-insensitive)
+        user_question_lower = user_question.lower()
+        best_match = None
+        best_score = 0
+        
+        for faq in all_faqs:
+            question_lower = faq.question.lower()
+            answer_lower = faq.answer.lower()
+            
+            # Calculate simple relevance score
+            score = 0
+            
+            # Check if user question contains FAQ question keywords
+            question_words = question_lower.split()
+            for word in question_words:
+                if len(word) > 2 and word in user_question_lower:
+                    score += 1
+            
+            # Check if user question contains FAQ answer keywords
+            answer_words = answer_lower.split()
+            for word in answer_words:
+                if len(word) > 2 and word in user_question_lower:
+                    score += 0.5
+            
+            # Check for exact matches
+            if user_question_lower in question_lower or question_lower in user_question_lower:
+                score += 5
+            
+            if user_question_lower in answer_lower or answer_lower in user_question_lower:
+                score += 3
+            
+            # Update best match if this FAQ has higher score
+            if score > best_score:
+                best_score = score
+                best_match = faq
+        
+        if best_match and best_score > 0:
+            return jsonify({
+                'question': user_question,
+                'answer': best_match.answer,
+                'source': 'database_faq',
+                'confidence': 'high' if best_score > 3 else 'medium',
+                'found': True,
+                'faq_id': best_match.id,
+                'relevance_score': best_score,
+                'timestamp': datetime.now().isoformat()
+            }), 200
+        else:
+            return jsonify({
+                'question': user_question,
+                'answer': 'I couldn\'t find a specific answer to your question. Please try rephrasing or contact support for more help.',
+                'source': 'database',
+                'confidence': 'low',
+                'found': False,
+                'available_topics': [faq.question for faq in all_faqs[:5]],  # Show first 5 available topics
+                'timestamp': datetime.now().isoformat()
+            }), 200
+        
+    except Exception as e:
+        logger.error(f"FAQ search API error: {e}")
+        return jsonify({
+            'question': user_question,
+            'answer': 'Sorry, there was an error searching the FAQ database.',
+            'source': 'error',
+            'confidence': 'low',
+            'error': str(e)
+        }), 500
+
 # Initialize database with PostgreSQL compatibility for Railway
 def init_database():
     """Initialize database with PostgreSQL compatibility for Railway"""

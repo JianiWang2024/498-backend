@@ -27,6 +27,11 @@ app = Flask(__name__)
 # Load configuration first
 app.config.from_object(Config)
 
+# Ensure SECRET_KEY is set for sessions
+if not app.config.get('SECRET_KEY'):
+    app.config['SECRET_KEY'] = 'dev-secret-key-change-in-production'
+    logger.warning("Using default SECRET_KEY - set SECRET_KEY environment variable in production")
+
 # Configure CORS to allow frontend access
 CORS(app, 
      supports_credentials=True,
@@ -423,6 +428,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         
+        logger.info(f"User {username} registered successfully")
         return jsonify({
             'message': 'User registered successfully',
             'user': user.to_dict()
@@ -430,7 +436,8 @@ def register():
         
     except Exception as e:
         db.session.rollback()
-        return jsonify({'error': 'Registration failed'}), 500
+        logger.error(f"Registration failed for user {username}: {str(e)}")
+        return jsonify({'error': f'Registration failed: {str(e)}'}), 500
 
 @app.route('/api/login', methods=['POST'])
 def login():

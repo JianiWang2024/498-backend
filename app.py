@@ -50,6 +50,46 @@ CORS(app,
 # initialize the database
 db.init_app(app)
 
+# Add health check endpoint
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Health check endpoint to verify server status"""
+    try:
+        # Check database connection
+        db_status = check_db_connection()
+        
+        # Check environment variables
+        env_status = {
+            'SECRET_KEY': bool(app.config.get('SECRET_KEY')),
+            'DATABASE_URL': bool(app.config.get('DATABASE_URL')),
+            'RAILWAY_DEPLOYMENT': bool(app.config.get('RAILWAY_DEPLOYMENT'))
+        }
+        
+        return jsonify({
+            'status': 'healthy',
+            'timestamp': datetime.now().isoformat(),
+            'database': 'connected' if db_status else 'disconnected',
+            'environment': env_status
+        }), 200
+    except Exception as e:
+        logger.error(f"Health check failed: {e}")
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
+# Add error handling middleware
+@app.errorhandler(500)
+def internal_error(error):
+    logger.error(f"Internal server error: {error}")
+    return jsonify({'error': 'Internal server error'}), 500
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    logger.error(f"Unhandled exception: {e}")
+    return jsonify({'error': 'Server error occurred'}), 500
+
 # Initialize database with PostgreSQL compatibility for Railway
 def init_database():
     """Initialize database with PostgreSQL compatibility for Railway"""
@@ -320,13 +360,15 @@ def smart_chat():
         return jsonify(response_data), 200
         
     except Exception as e:
-        print(f"Intelligent Chat API Error: {e}")
+        logger.error(f"Intelligent Chat API Error: {e}")
+        db.session.rollback()  # Rollback any database changes
         return jsonify({
             'question': user_question,
             'answer': 'Sorry, the service is temporarily unavailable. Please try again later.',
             'source': 'error',
             'confidence': 'low',
-            'similarity': 0.0
+            'similarity': 0.0,
+            'error_details': str(e) if app.config.get('DEBUG') else 'Internal server error'
         }), 500
 
 # User Authentication APIs

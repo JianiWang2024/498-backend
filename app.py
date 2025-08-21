@@ -30,6 +30,7 @@ CORS(app,
      origins=[
          "http://localhost:3000",  # 本地开发
          "https://498-frontend.vercel.app",  # Vercel前端
+         "https://498-frontend-production.up.railway.app",  # Vercel部署的前端
          "https://*.vercel.app",   # 所有Vercel应用
          "https://*.railway.app",  # Railway应用
          "https://*.netlify.app",  # Netlify部署

@@ -24,6 +24,9 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Load configuration first
+app.config.from_object(Config)
+
 # Configure CORS to allow frontend access
 CORS(app, 
      supports_credentials=True,
@@ -38,8 +41,6 @@ CORS(app,
      ],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization", "X-Requested-With"])
-
-app.config.from_object(Config)
 
 # initialize the database
 db.init_app(app)

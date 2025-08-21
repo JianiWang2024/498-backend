@@ -29,8 +29,9 @@ CORS(app,
      supports_credentials=True,
      origins=[
          "http://localhost:3000",  # 本地开发
+         "https://498-frontend.vercel.app",  # Vercel前端
+         "https://*.vercel.app",   # 所有Vercel应用
          "https://*.railway.app",  # Railway应用
-         "https://*.vercel.app",   # Vercel部署
          "https://*.netlify.app",  # Netlify部署
          "https://*.github.io"     # GitHub Pages
      ],
